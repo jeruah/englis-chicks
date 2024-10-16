@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 10-02-2021 a las 15:52:02
--- Versión del servidor: 8.0.21
--- Versión de PHP: 7.4.11
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-10-2024 a las 18:53:58
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `alumnos` (
-  `id` int NOT NULL,
-  `nombre` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `edad` int NOT NULL,
-  `matricula` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `id_grado` int NOT NULL,
-  `activo` int NOT NULL
+  `id` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `edad` int(11) NOT NULL,
+  `matricula` varchar(10) NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `id_grado` int(11) NOT NULL,
+  `activo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -42,8 +42,7 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`id`, `nombre`, `edad`, `matricula`, `correo`, `id_grado`, `activo`) VALUES
-(1, 'Marko Robles', 20, '3141596384', 'markorobles@mail.com', 1, 1),
-(2, 'Juan Perez', 25, '9638527410', 'juan.perez@mail.com', 2, 1),
+(2, 'Juan Peres', 25, '9638527410', 'juan.perez@mail.com', 2, 1),
 (3, 'Zara Guerrero', 18, '82272666', 'zara.guerrero@mail.com', 1, 1),
 (4, 'Aldo Hidalgo', 28, '70106509', 'aldo.hidalgo@mail.com', 2, 1),
 (5, 'Julia Pineda', 37, '36129106', 'julia.pineda@mail.com', 1, 1),
@@ -242,7 +241,10 @@ INSERT INTO `alumnos` (`id`, `nombre`, `edad`, `matricula`, `correo`, `id_grado`
 (198, 'Federico Leon', 26, '19130675', 'federico.leon@mail.com', 1, 97),
 (199, 'Sandra Baltazar', 35, '95842880', 'sandra.baltazar@mail.com', 2, 98),
 (200, 'Juan Juarez', 22, '42213122', 'juan.juarez@mail.com', 1, 99),
-(201, 'Pedro Baltazar', 33, '92658368', 'pedro.baltazar@mail.com', 1, 100);
+(201, 'Pedro Baltazar', 33, '92658368', 'pedro.baltazar@mail.com', 1, 100),
+(208, 'admin', 18, '69', 'admin@admin', 5, 1),
+(209, 'admin', 18, '69', 'admin@new', 4, 1),
+(210, 'admin', 18, '69', 'admin@other', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -251,8 +253,8 @@ INSERT INTO `alumnos` (`id`, `nombre`, `edad`, `matricula`, `correo`, `id_grado`
 --
 
 CREATE TABLE `grados` (
-  `id` int NOT NULL,
-  `grado` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `grado` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -291,13 +293,13 @@ ALTER TABLE `grados`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
 
 --
 -- AUTO_INCREMENT de la tabla `grados`
 --
 ALTER TABLE `grados`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -307,7 +309,7 @@ ALTER TABLE `grados`
 -- Filtros para la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  ADD CONSTRAINT `fk_alumno_grado` FOREIGN KEY (`id_grado`) REFERENCES `grados` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `fk_alumno_grado` FOREIGN KEY (`id_grado`) REFERENCES `grados` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,7 +1,7 @@
 # Get Start
 ## requirements
 -  xamp
-  * download xampp, go to instalarion folder of xampp, generally is located in C://xampp
+  * download xampp, go to instalation folder of xampp, generally is located in C://xampp
   * in htdocs folder delete all, cpoy and paste all files in this folder
   * start the services
 
